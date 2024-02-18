@@ -1,0 +1,6 @@
+*.csv
+Cyclistic_Case_Study.Rproj
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
