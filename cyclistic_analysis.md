@@ -3,14 +3,13 @@ Cyclistic Bike-Share Case Study
 
 # Introduction
 
-The following is a case study using the data from a fictional company
-named Cyclistic. This is part of the capstone project attained from the
-Google Data Analytics Course with the goal to uncover insights into the
-bike-sharing habits of Cyclistic’s riders. These insights will be used
-to provide a marketing strategy based off data informed decisions.
-Specifically, the analysis seeks to understand the differences in usage
-patters between casual riders and members with the ultimate goal of
-converting the former into subscribing members.
+This case study utilizes data from a fictional company named Cyclistic
+as part of the capstone project from the Google Data Analytics Course.
+The goal is to uncover insights into the bike-sharing habits of
+Cyclistic’s riders, which will inform a marketing strategy based on
+data-informed decisions. The analysis specifically aims to understand
+different usage patterns between casual riders and members, with the
+ultimate goal of converting the former into subscribing members.
 
 # Data Preparation
 
@@ -429,8 +428,8 @@ map_station_list <- full_station_list %>%
   distinct(station_id, station_name, .keep_all = T)
 ```
 
-Create a cluster leaflet map. Leaflet code is provided in .R file
-(Screenshot was provided for compatibility) ![Cluster Map of
+Create a cluster leaflet map. (Leaflet code is provided in .R file,
+screenshot was used for compatibility) ![Cluster Map of
 Stations](cyclistic_analysis_files/figure-gfm/stations_cluster_map.png)
 
 ### General Overview
@@ -481,7 +480,7 @@ ggplot(all_trips3, aes(x = ride_length_sec/60)) +
 
 ### Member Overview
 
-Members statistics Significantly higher standard deviation for casual
+Members statistics significantly higher standard deviation for casual
 riders suggests that there is more variability in their ride lengths.
 
 ``` r
@@ -524,7 +523,7 @@ ggplot(member_summary, aes(x = member_casual, y = `Total Number of Rides`, fill 
 
 ![](cyclistic_analysis_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
 
-Distribution of ride length Non-members average ride duration is twice
+Distribution of ride length. Non-members average ride duration is twice
 as long as members despite members using the service more frequently.
 
 ``` r
@@ -617,9 +616,9 @@ ggplot(weekday_summary, aes(x = weekday, y = `Average Ride Length (Minutes)`, fi
 ### Monthly Rider Behavior
 
 Shortest ride length remains at 1 second throughout the year, suggesting
-there is a consistent recording error. IQR is higher during the warmer
-months 99th percentile are higher during the warmer months Its clear
-rider activity is influenced by the weather.
+there may be a consistent recording error. Higher IQR in the warmer
+months is an indication that rider activity is influenced by the
+weather.
 
 ``` r
 month_summary <- all_trips3 %>%
@@ -653,7 +652,7 @@ kable(month_summary, format = "markdown")
 | Nov   |                270286 |                              1 |                     8.933333 |                      14.18004 |                     22279.733 |                     80.47272 |                      9.966667 |                                 35.96667 |                                  76.8525 |                                  1.203757 |                                  15.44276 |
 | Dec   |                187593 |                              1 |                     8.666667 |                      14.24932 |                     30400.550 |                    126.14195 |                      9.583333 |                                 34.21667 |                                  73.2000 |                                  1.186192 |                                  14.01142 |
 
-Plot monthly ride count by membership type The amount of rides drop
+Plot monthly ride count by membership type. The amount of rides drop
 significantly in the winter months, peaking in September. During the
 slower months it appears members ride twice as much as casual riders.
 
@@ -672,8 +671,8 @@ all_trips3 %>%
 
 ![](cyclistic_analysis_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
 
-Plot monthly average ride by membership type Casual riders trip length
-are about twice as long as members. This is consistent throughout the
+Plot monthly average ride by membership type. Casual riders trip length
+are about twice as long as members, this is consistent throughout the
 year.
 
 ``` r
@@ -699,7 +698,7 @@ members. Casual riders tend to ride for longer times and on weekends
 when compared to annual members. This is particularly apparent in the
 warmer months, suggesting casual riders are using the service for
 recreational use as opposed to commuting. When cultivating a marketing
-plan to appeal to casual riders these clear differences in motivation
+plan to appeal to casual riders the clear differences in motivation
 should be considered. With an emphasis on converting riders already
 using our service, the following can be implemented.
 
@@ -709,11 +708,11 @@ using our service, the following can be implemented.
     current casual riders. A tier membership system that would allow for
     weekend riders to subscribe to “Weekend-only” or “Summer-Passes”
     could be more appealing.
-2.  Introducing a tracking system that allows riders to track distance
-    and time themselves could “gamify” the experience. Its clear casual
-    riders seek out longer rides, so the ability to share notable
-    achievements would not only bring a natural sense of competition but
-    a sense of community in our riders.
+2.  Introducing a tracking system that enables riders to monitor their
+    distance and time could “gamify” the experience. It’s evident that
+    casual riders pursue longer rides, so the capability to share
+    notable achievements would not only foster a natural sense of
+    competition but also a sense of community among our riders.
 3.  We can further encourage a sense of community by rewarding casual
     riders who use Social Media to engage with our service. This can be
     done with promotional prices or free weekend trials for those who

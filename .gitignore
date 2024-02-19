@@ -1,5 +1,6 @@
 *.csv
 Cyclistic_Case_Study.Rproj
+README.Rmd
 .Rproj.user
 .Rhistory
 .RData
