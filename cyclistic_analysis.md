@@ -431,7 +431,7 @@ map_station_list <- full_station_list %>%
 
 Create a cluster leaflet map. Leaflet code is provided in .R file
 (Screenshot was provided for compatibility) ![Cluster Map of
-Stations](stations_cluster_map.png)
+Stations](cyclistic_analysis_files/figure-gfm/stations_cluster_map.png)
 
 ### General Overview
 

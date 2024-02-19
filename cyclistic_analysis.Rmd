@@ -156,6 +156,7 @@ all_trips2 <- all_trips2 %>%
   select(-station_name, -station_id)
 ```
 
+
 Do the same for the end station name's and id's.
 ```{r}
 all_trips2 <- left_join(all_trips2, full_station_list,
@@ -167,8 +168,8 @@ all_trips2 <- all_trips2 %>%
   select(-station_name, -station_id)
 ```
 
-Recovered a couple hundred thousand station names and id's. Process was limited due to clustering of station coordinates.
 
+Recovered a couple hundred thousand station names and id's. Process was limited due to clustering of station coordinates.
 ```{r}
 print(colSums(is.na(all_trips)))
 print(colSums(is.na(all_trips2)))
@@ -176,29 +177,29 @@ print(colSums(is.na(all_trips2)))
 
 ### Identifying Extreme Outliers
 
-Calculate the distance using the Haversine formula (Output is in meters). This is euclidean distance and is not a reflection of of road network distance.
 
+Calculate the distance using the Haversine formula (Output is in meters). This is euclidean distance and is not a reflection of of road network distance.
 ```{r}
 all_trips2 <- all_trips2 %>%
   rowwise() %>% 
   mutate(geo_distance_meters = distHaversine(c(start_lng, start_lat), c(end_lng, end_lat)))
 ```
 
-Distribution of ride length.
 
+Distribution of ride length.
 ```{r}
 summary(all_trips2$ride_length_sec)
 ```
 
-In-depth view considering there is such a large gap in the 4th quartile. Calculate percentiles for ride length in groups of 0.05.
 
+In-depth view considering there is such a large gap in the 4th quartile. Calculate percentiles for ride length in groups of 0.05.
 ```{r}
 fourth_quar_ride_length <- quantile(all_trips2$ride_length_sec, probs = c(.80, .85, .90, .95, .99, .998, .999, 1))
 fourth_quar_ride_length
 ```
 
-The distribution is vast with great extremes, with a majority of outliers associated with the docked bikes. Perhaps this is an indication of an error occurring with docked bikes.
 
+The distribution is vast with great extremes, with a majority of outliers associated with the docked bikes. Perhaps this is an indication of an error occurring with docked bikes.
 ```{r}
 ggplot(all_trips2, aes(x = ride_length_sec/3600, color = rideable_type)) +
   geom_boxplot(outlier.color = "darkred", alpha = 0.3) +
@@ -207,8 +208,8 @@ ggplot(all_trips2, aes(x = ride_length_sec/3600, color = rideable_type)) +
   annotate("Text", x = 312, y = 0.04, label = " Majority of Outliers", size = 5)
 ```
 
-Most trips fall within a few hours or less, with the exception of docked bikes.
 
+Most trips fall within a few hours or less, with the exception of docked bikes.
 ```{r warning=FALSE}
 ggplot(all_trips2, aes(x = ride_length_sec/3600, fill = rideable_type)) +
   geom_histogram(binwidth = 10, color = "black") +
@@ -221,8 +222,8 @@ ggplot(all_trips2, aes(x = ride_length_sec/3600, fill = rideable_type)) +
   scale_fill_brewer(palette = "Dark2")
 ```
 
-Filter and examine erroneous data.
 
+Filter and examine erroneous data.
 ```{r}
 invalid_trips <- all_trips2 %>% 
   filter((ride_length_sec <= 0 |
@@ -230,8 +231,8 @@ invalid_trips <- all_trips2 %>%
            start_station_name == "Pawel Bialowas - Test- PBSC charging station")
 ```
 
-After review, remove NA values and erroneous trips.
 
+After review, remove NA values and erroneous trips.
 ```{r}
 all_trips3 <- all_trips2 %>%
   na.omit() %>%
@@ -241,14 +242,14 @@ all_trips3 <- all_trips2 %>%
 # Analysis
 
 Create a station list to have one set of coordinates per station.
-
 ```{r}
 map_station_list <- full_station_list %>% 
   distinct(station_id, station_name, .keep_all = T)
 ```
 
 Create a cluster leaflet map. Leaflet code is provided in .R file (Screenshot was provided for compatibility)
-![Cluster Map of Stations](stations_cluster_map.png)
+![Cluster Map of Stations](cyclistic_analysis_files/figure-gfm/stations_cluster_map.png)
+
 
 
 ### General Overview
