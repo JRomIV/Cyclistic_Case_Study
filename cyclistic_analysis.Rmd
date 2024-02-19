@@ -1,6 +1,6 @@
 ---
 title: "Cyclistic Bike-Share Case Study"
-output: html_document
+output: github_document
 ---
 
 # Introduction
@@ -247,18 +247,9 @@ map_station_list <- full_station_list %>%
   distinct(station_id, station_name, .keep_all = T)
 ```
 
-Create a cluster leaflet map.
+Create a cluster leaflet map. Leaflet code is provided in .R file (Screenshot was provided for compatibility)
+![Cluster Map of Stations](stations_cluster_map.png)
 
-```{r}
-stations_map_cluster <- leaflet(map_station_list) %>%
-  addTiles() %>%
-  setView(lng = -87.70, lat = 41.85, zoom = 11) %>%
-  addMarkers(lng = ~lng, lat = ~lat,
-             popup = ~paste("Station ID: ", station_id, "<br>Station Name: ", station_name),
-             clusterOptions = markerClusterOptions())
-stations_map_cluster
-
-```
 
 ### General Overview
 
