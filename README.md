@@ -25,7 +25,8 @@ information about each ride made with the service over the past year.
 The dataset covers various aspects of the rides, such as start and end
 times, station names, ride length, and user type (casual or member). The
 data was provided as part of the Google Data Analytics Professional
-Certificate capstone project.
+Certificate capstone project. You can download the data
+[here](https://divvy-tripdata.s3.amazonaws.com/index.html).
 
 ## Methodology
 
