@@ -22,37 +22,42 @@ riders to purchase annual memberships.
 
 The analysis is based on Cyclistic’s trip data, which includes
 information about each ride made with the service over the past year.
-The dataset covers various aspects of the rides, such as start and end
+The dataset covers various aspects of the rides, such as start/end
 times, station names, ride length, and user type (casual or member). The
 data was provided as part of the Google Data Analytics Professional
-Certificate capstone project. You can download the data
+Certificate capstone project. You can access the data
 [here](https://divvy-tripdata.s3.amazonaws.com/index.html).
 
 ## Methodology
 
-- Data Preparation: The R scripts include steps for loading, cleaning,
+- **Data Preparation:** The scripts include steps for loading, cleaning,
   and preparing the data for analysis. This involves merging multiple
   CSV files, handling missing values, and creating new variables for
   analysis.
-- Data Analysis: Using tidyverse and other R packages, we conducted an
-  exploratory data analysis to compare ride behaviors between casual
+- **Data Analysis:** Using tidyverse and other R packages, we conducted
+  an exploratory data analysis to compare ride behaviors between casual
   riders and members. Key metrics include ride length, frequency, and
   patterns related to time of day, day of the week, and month.
-- Visualization: The project utilizes ggplot2 for data visualization,
-  providing insights into ride patterns and helping to identify trends
-  that differentiate casual riders from annual members. A static map
-  visualizes station locations to understand geographic trends.
+- **Visualization:** The project utilizes ggplot2 for data
+  visualization, providing insights into ride patterns and helping to
+  identify trends that differentiate casual riders from annual members.
+  A static map visualizes station locations to understand geographic
+  trends.
 
 ## Key Findings
 
-- Casual riders tend to use the service more on weekends and for longer
-  rides, suggesting leisure use.
-- Annual members consistently use the service for shorter, more frequent
-  rides, indicating commuting or routine travel. -Seasonality affects
-  usage patterns, with higher activity during warmer months.
-- A small portion of rides are significantly longer than most,
-  especially with docked bikes, pointing to potential outliers or data
-  recording errors.
+Casual riders tend to use the service more on weekends and for longer
+rides, suggesting leisure use. ![Average Ride Duration
+(Weekday)](cyclistic_analysis_files/figure-gfm/weekly_average_ride_duration.png)
+
+Annual members consistently use the service for shorter, more frequent
+rides, indicating commuting or routine travel. ![Distribution of Ride
+Length by
+Membership](cyclistic_analysis_files/figure-gfm/ride_length_by_membership.png)
+
+Seasonality affects usage patterns, with higher activity during warmer
+months. ![Ride Count By Membership
+(Month)](cyclistic_analysis_files/figure-gfm/monthly_ride_count_by_membership.png)
 
 ## Recommendations
 
